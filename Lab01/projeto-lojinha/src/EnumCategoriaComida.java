@@ -1,0 +1,3 @@
+public enum EnumCategoriaComida {
+    DOCE,SALGADO,LANCHE,JAPONES,BRASILEIRA,MEXICANA,COREANA;
+}
