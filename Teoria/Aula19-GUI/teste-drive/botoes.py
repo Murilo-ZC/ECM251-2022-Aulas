@@ -15,6 +15,8 @@ base.iconphoto(False, PhotoImage(file='calculator.png'))
 def acao_botao():
     print("Click!")
 
+
+
 #Criando um botão
 ttk.Button(
     base,
@@ -23,5 +25,13 @@ ttk.Button(
     command=acao_botao
 ).pack(side=LEFT, padx= 10, pady=5)
 
+#Criando um segundo botão
+bot2 = ttk.Button(
+    base,
+    text="Segundo Botão",
+    bootstyle=(DANGER,OUTLINE),
+    command=acao_botao
+)
+bot2.pack(side=LEFT, padx= 10, pady = 5)
 #Ponto de entrada da interface
 base.mainloop()
