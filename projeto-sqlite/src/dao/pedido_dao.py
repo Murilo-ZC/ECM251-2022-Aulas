@@ -27,12 +27,24 @@ class PedidoDAO:
         self.cursor.close()
         return resultados
     
-    def inserir_item(self, item):
+    def inserir_pedido(self, pedido):
         self.cursor = self.conn.cursor()
-        self.cursor.execute("""
-            INSERT INTO Itens (id, nome, preco)
-            VALUES(?,?,?);
-        """, (item.id, item.nome, item.preco))
+        self.cursor.execute(f"""
+            INSERT INTO Pedidos (
+                id_item, 
+                id_cliente, 
+                quantidade, 
+                numero_pedido, 
+                data_hora
+            )
+            VALUES(
+                '{pedido.id_item}',
+                '{pedido.id_cliente}',
+                {pedido.quantidade},
+                '{pedido.numero_pedido}',
+                '{pedido.data_hora}'
+            );
+        """)
         self.conn.commit()
         self.cursor.close()
     def pegar_item(self, id):
