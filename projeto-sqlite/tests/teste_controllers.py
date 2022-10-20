@@ -17,3 +17,9 @@ for item in items:
 print("**************************************")
 item = controller.pegar_item("CAF6")
 print(item)
+
+print("**************************************")
+item = controller.pegar_item("OLA1")
+item.nome = "RTX4090"
+item.preco = 14990.90
+print(controller.atualizar_item(item))

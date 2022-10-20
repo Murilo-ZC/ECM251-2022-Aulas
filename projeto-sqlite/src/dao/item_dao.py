@@ -48,4 +48,18 @@ class ItemDAO:
         self.cursor.close()
         return item
     
+    def atualiza_item(self, item):
+        try:
+            self.cursor = self.conn.cursor()
+            self.cursor.execute(f"""
+                UPDATE Itens SET
+                nome = '{item.nome}',
+                preco = {item.preco}
+                WHERE id = '{item.id}';
+            """)
+            self.conn.commit()
+            self.cursor.close()
+        except:
+            return False
+        return True
 
