@@ -63,4 +63,27 @@ class ItemDAO:
             return False
         return True
     
+    def deletar_item(self, id):
+        try:
+            self.cursor = self.conn.cursor()
+            self.cursor.execute(f"""
+                DELETE FROM Itens 
+                WHERE id = '{id}'
+            """)
+            self.conn.commit()
+            self.cursor.close()
+        except:
+            return False
+        return True
 
+    def search_all_for_name(self,nome):
+        self.cursor = self.conn.cursor()
+        self.cursor.execute(f"""
+            SELECT * FROM Itens
+            WHERE nome LIKE '{nome}%';
+        """)
+        resultados = []
+        for resultado in self.cursor.fetchall():
+            resultados.append(Item(id=resultado[0], nome=resultado[1], preco=resultado[2]))
+        self.cursor.close()
+        return resultados
