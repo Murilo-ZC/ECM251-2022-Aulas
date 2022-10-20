@@ -21,3 +21,10 @@ class ItemController:
 
     def atualizar_item(self, item) -> bool:
         return ItemDAO.get_instance().atualiza_item(item)
+
+    def deletar_item(self, id) -> bool:
+        return ItemDAO.get_instance().deleta_item(id)
+    
+    def buscar_item_nome(self, nome) -> list[Item]:
+        itens = ItemDAO.get_instance().buscar_item_nome(nome)
+        return itens
