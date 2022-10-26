@@ -5,12 +5,12 @@ class PedidoController:
     def __init__(self) -> None:
         pass
     def total_pedido(self, numero_pedido) -> float:
-        items_pedido = PedidoDAO.get_instance().get_itens(numero_pedido)
+        items_pedido = PedidoDAO.get_instance().pegar_pedido(numero_pedido)
         total = 0
         item_controller = ItemController()
-        for (item_id, quantidade) in items_pedido:
-            item = item_controller.pegar_item(item_id)
-            total += item.preco * quantidade
+        for item in items_pedido:
+            item_elemento = item_controller.pegar_item(item.id_item)
+            total += item_elemento.preco * item.quantidade
         return total
     def pegar_pedido(self, numero_pedido)-> list[Pedido]:
         return PedidoDAO.get_instance().pegar_pedido(numero_pedido)
