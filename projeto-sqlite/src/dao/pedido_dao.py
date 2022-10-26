@@ -81,7 +81,7 @@ class PedidoDAO:
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
-                DELETE FROM Itens 
+                DELETE FROM Pedidos 
                 WHERE id = '{id}'
             """)
             self.conn.commit()
