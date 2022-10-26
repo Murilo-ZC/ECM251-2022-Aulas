@@ -14,3 +14,7 @@ class PedidoController:
         return total
     def pegar_pedido(self, numero_pedido)-> list[Pedido]:
         return PedidoDAO.get_instance().pegar_pedido(numero_pedido)
+
+    def atualizar_pedido(self, pedido)-> bool:
+        return PedidoDAO.get_instance().atualizar_pedido(pedido)
+        
